@@ -1,72 +1,58 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    Customer Journey as a service
-
-    <button data-product_id="1" data-product_sku="1123">Continue</button>
-    <button data-product_id="2">Continue Again</button>
-    <script>
-      window.cjaas = function (...args) {
-        if (cjaas && cjaas.q) {
-          cjaas.q.push(args);
-        } else {
-          cjaas.q = [args];
-        }
-      };
-
-      // // where are the scripts hosted?
-      // necessary to fetch other dependancies
-      window.cjaas.scriptURL = "../dist";
-      // window.cjaas.scriptURL = "https://cjaas.cisco.com/event-listener";
-
-      // where is the server hosted?
-      window.cjaas.baseURL = "https://uswest-nonprod.cjaas.cisco.com";
-      
-     
-      var script = document.createElement("script");
-    
-      script.src = window.cjaas.scriptURL + "/ref-cj-analytics.js";
-      script.type = "module"; 
-      script.async = true;
-      document.body.appendChild(script);
-      
-      // sets the Datasink write token
-      cjaas("dsWriteToken", "sample-id-est");
-      
-      // set token to listen for 
-      cjaas("streamReadToken", "sample-id-est");
-
-    
-      // page events will be tracked
-      cjaas("option", "PAGE_TRACK", true);
-      cjaas("option", "ENABLE_ORCHESTRATION", true);
-
-      // init tracking
-      cjaas("init");
-      
-
-      //Identify yourself
-      
-      cjaas("identify", `personID`, "Person Name"); 
-
-      //sending data {"title": "Outliers", "price": 50}. Track event : User buys book
-      setTimeout(()=>{
-        console.log("fired the event")
-        cjaas("track", "User buys book", {"title": "Outliers", "price": 50})},
-      20000);
-      cjaas("track", "User buys book", {"title": "My Life in Full", "price": 70});
-     
+    <meta chardset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Troubleshooting WxM </title>
+  <style>
+	body {
+	background-image: url('https://images.pexels.com/photos/673648/pexels-photo-673648.jpeg?cs=srgb&dl=pexels-francesco-ungaro-673648.jpg&fm=jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed; 
+	background-size: 100% 100%;
+		}
+	p.normal {font-style: normal;}
+    p.italic {font-style: italic;}
+	p.oblique {font-style: oblique;}
+  </style>
+ </head>	
+<body>
+<h1>Introduction</h1>
+<p class="normal"> Cisco Contact Center Enterprise customers can leverage Google Contact Center Artificial Intelligence (CCAI) features like Agent Answers, in which an agent is provided with relevant suggestions and recommendations in real time for the agent to consider. The suggestions and recommendations are based on the ongoing conversation between the caller and the agent.</p>
+<p class="normal"> In addition, Call Transcripts services assist the agents using Artificial Intelligence (AI) and Natural Language Understanding (NLU). </p>
+<p class="normal"> These services are available for the agents in the Cisco Finesse desktop gadgets. The Call Transcript gadget dynamically converts the ongoing conversation to text and presents the text to an agent for real-time viewing and reference </p>
+<p class="normal"> This lab exercises outlines the steps partners or customers need to follow to implement and troubleshoot Agent Answers and Transcripts</p>
+<h2>Prerequisites</h2>
+<p class="normal"> This is an intermediate session intended for engineers with prior Contact Center Enterprise (CCE) and CVP experience </p>
+<h2>Disclaimer</h2>
+<p class="normal"> This lab is not designed for a production system, thus not all recommended features are implemented or enabled optimally. For implementation and design-related questions, please contact your representative at Cisco, or a Cisco partner </p>
+<h3>Lab 1 System Assessmen</h3>
+<p class="normal"> In this lab you will be placing a call form you cell phine to Dcloud contact Center and be able to see how agent answers and transcripts work.</p>
+<h4>Exercise 1. CVA Call</h4>
+<p class="normal"> Follow this video to complete exrecise 1 </p>
+<p class="normal"> In this video you will be able to see how Agennt Answers work </p>
+<iframe width="420" height="315"
+src="https://app.vidcast.io/share/53194e1f-4a0d-4e63-989c-c28e60a20433">
+</iframe>
+<p class="normal"> Thanks for Completing this lab. Now you can continue with the presentation </p>
+<script>
+    //Name of the Customer Support Template: CiscoLive_Chat_Template
+    //Name of the Organization: CiscoLive_Chat
+      (function(document, script) {
+      var bubbleScript = document.createElement(script);
+      e = document.getElementsByTagName(script)[0];
+      bubbleScript.async = true;
+      bubbleScript.CiscoAppId =  'cisco-chat-bubble-app';
+      bubbleScript.appPrefix = '';
+      bubbleScript.DC = 'produs1.ciscoccservice.com';
+      bubbleScript.orgId = '9c5efb3d-0a79-4453-9bc2-6dc8333b623f';
+      bubbleScript.templateId = '6f8ac500-e72e-11ec-b47d-596afb3c6e07';
+      bubbleScript.src = 'https://bubble.produs1.ciscoccservice.com/bubble.js';
+      bubbleScript.type = 'text/javascript';
+      bubbleScript.setAttribute('charset', 'utf-8');
+      e.parentNode.insertBefore(bubbleScript, e);
+      })(document, 'script');
     </script>
-
-    <script>
-      window.addEventListener("Journey Interrupted", function (ev) {
-        console.log("event from journey", ev);
-      });
-    </script>
-  </body>
+</body>
 </html>
